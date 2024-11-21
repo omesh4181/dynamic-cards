@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        .container{
+            display: flex;
+            /* border: 1px solid black; */
+        }
+
+        .card:hover{
+            transform:scale(1.05)
+        }
+
+        .botton:hover{
+            transform: scale(1.25);
+        }
+    </style>
+</head>
+<body>
+    
+    <h1 style="text-align: center;font-size:80px;">
+        My Products
+    </h1>
+    <div class="container">
+        <div class="contain">
+
+        </div>
+
+        
+    </div>
+    <script type="module">
+
+        import { data } from "./script.js";
+
+        const contain=document.querySelector(".contain")
+        contain.style.width="100%"
+        contain.style.display="flex"
+        contain.style.flexWrap="wrap"
+        contain.style.gap="20px"
+        contain.style.justifyContent="space-around"
+
+        for(let objects of data){
+
+            const card=document.createElement("div")
+            card.classList.add("card")
+            card.style.maxHeight="100%"
+            card.style.width="20%";
+            card.style.border="1px solid black"
+            card.style.borderRadius="20px"
+            // card.style.paddingLeft="20px"
+            // card.style.margin="auto"
+            // card.style.overFlow="hidden"
+            // card.style.transform.hover="scale(1.05)"
+
+            const id= document.createElement("h2");
+            // id.textContent=objects.id
+            // card.appendChild(id)
+
+            const img=document.createElement("img")
+            img.src=objects.image
+            img.style.maxWidth="100%"
+            img.style.borderRadius="20px"
+            img.style.borderBottom="20px"
+            card.appendChild(img)
+
+            const title = document.createElement("h3")
+            title.textContent=objects.title
+            card.appendChild(title)
+
+            const para = document.createElement("p");
+            para.textContent=objects.description
+            card.appendChild(para)
+
+            const price = document.createElement("h2");
+            price.textContent=`price = ${objects.price} $`
+
+            price.style.textAlign="center"
+            card.appendChild(price)
+
+            const rating = document.createElement("h2")
+            rating.textContent=`rate = ${objects.rating.rate}***`
+            rating.style.display="inline"
+            rating.style.width="50%"
+            rating.style.height="3%"
+            rating.style.marginLeft="20px"
+            rating.style.backgroundColor="green"
+            rating.style.color="white"
+            rating.style.opacity="0.85"
+            rating.style.borderRadius="5px"
+            card.appendChild(rating)
+
+            const count = document.createElement("h2")
+            count.textContent=` RC : ${objects.rating.count}`
+            count.style.display="inline"
+            count.style.marginLeft="20px"
+            card.appendChild(count)
+
+            // for(let i in objects.rating){
+
+            // }
+
+            const botton = document.createElement("button")
+            botton.textContent="Click me!"
+            botton.style.width="50%"
+            botton.style.height="5%"
+            botton.style.marginLeft="20%"
+            botton.style.backgroundColor="black"
+            botton.style.color="white"
+            botton.style.bottom="20px"
+            botton.style.marginTop="50px"
+            botton.style.borderRadius="20px"
+            botton.classList.add("botton")
+            card.appendChild(botton)
+
+            contain.appendChild(card)
+
+
+        }
+        console.log(contain)
+
+    </script>
+</body>
+</html>
